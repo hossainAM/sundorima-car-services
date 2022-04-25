@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithGithub } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../../Shared/Spinner/Spinner';
 
@@ -10,6 +10,9 @@ const SocialLogIn = () => {
     const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);//Github
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     //Google + Facebook
     let errorElement;
@@ -22,9 +25,13 @@ const SocialLogIn = () => {
       errorElement =
         <p>Error: {error?.message} {error1?.message} {error2?.message}</p>
   }
-    if (user || user1 || user2) {
-       navigate('/home')
-    }
+    // if (user || user1 || user2) {
+    //    navigate('/home')
+    // }
+
+    if(user || user1 || user2) {
+    navigate(from, { replace: true });
+}
 
     return (
         <>
