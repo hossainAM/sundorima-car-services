@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useServiceDetail from '../../../hooks/useServiceDetail';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -44,7 +44,7 @@ const CheckOut = () => {
                 <br/>
                 <input className='w-100 mb-2' type="text" name="service" value={service.name} placeholder='Service Name' readOnly/>
                 <br/>
-                <Link to={'/orders'} className='btn btn-primary py-2 w-25 d-block mx-auto' type="submit">Place Order</Link>
+                <input className='btn btn-primary py-2 w-25 d-block mx-auto' type="submit" value="Place Order"/>
             </form>
         </div>
     );

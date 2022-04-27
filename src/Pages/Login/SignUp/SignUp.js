@@ -33,9 +33,9 @@ const SignUp = () => {
        return <Loading></Loading>
    }
 
-     if(user) {
-         console.log('user', user);
-     }
+    //  if(user) {
+    //      console.log('user', user);
+    //  }
 
     //SignUp
     const handleSignUp = async e => {
