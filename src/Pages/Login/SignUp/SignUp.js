@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateP
 import auth from '../../../firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 import Loading from '../../../Shared/Spinner/Spinner';
+import PageTitle from '../../../Shared/PageTitle/PageTitle';
 
 const SignUp = () => {
     //State for terms and conditions checkbox
@@ -54,6 +55,8 @@ const SignUp = () => {
     }
 
     return (
+        <>
+        <PageTitle title="SignUp"></PageTitle>
         <div>
              <h2 className='text-primary text-center mt-2' >Please Sign Up!!</h2>
             <Form onSubmit={handleSignUp} className='container w-50 mx-auto'>
@@ -84,6 +87,7 @@ const SignUp = () => {
             <p className='text-center mt-2'>Already have ab account? <Link to='/login' onClick={handleLogIn}className='text-primary text-decoration-none'>Please Login!!</Link></p>
             <SocialLogIn></SocialLogIn>
         </div>
+        </>
     );
 };
 

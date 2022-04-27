@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Service from '../Service/Service';
 import './Services.css';
+import PageTitle from '../../../Shared/PageTitle/PageTitle';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -14,6 +15,8 @@ const Services = () => {
     // console.log(services);
 
     return (
+        <>
+        <PageTitle title="Services"></PageTitle>
         <div className='container' id='services'>
             <h1 className="services-title my-5" >Our Services</h1>
             <div className="services-container">
@@ -22,6 +25,7 @@ const Services = () => {
             }
             </div>
         </div>
+        </>
     );
 };
 

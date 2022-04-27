@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 const AddService = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -17,6 +17,8 @@ const AddService = () => {
         .then(result => console.log(result))
     };
     return (
+        <>
+        <PageTitle title="Add Service"></PageTitle>
         <div className='w-50 mx-auto'>
             <h2>Add a service</h2>
              <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
@@ -27,6 +29,7 @@ const AddService = () => {
                 <button className='w-25 mx-auto btn btn-primary' type="submit">Add Service</button>
             </form>
         </div>
+        </>
     );
 };
 

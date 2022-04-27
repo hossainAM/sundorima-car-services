@@ -1,4 +1,5 @@
 import React from 'react';
+import PageTitle from '../../../Shared/PageTitle/PageTitle';
 import expert1 from '../../../images/experts/expert-1.jpg';
 import expert2 from '../../../images/experts/expert-2.jpg';
 import expert3 from '../../../images/experts/expert-3.jpg';
@@ -18,6 +19,8 @@ const experts = [
 
 const Experts = () => {
     return (
+        <>
+        <PageTitle title="Experts"></PageTitle>
         <div className='container' id='experts'>
            <div className="row">
                 <h2 className='text-center text-danger mt-5'  >Meet Our Experts</h2>
@@ -28,6 +31,7 @@ const Experts = () => {
                 </div>
            </div>
         </div>
+        </>
     );
 };
 
