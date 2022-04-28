@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithGithub } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import Loading from '../../../Shared/Spinner/Spinner';
+import Loading from '../../../Shared/Loading/Loading';
 
 const SocialLogIn = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);//Google

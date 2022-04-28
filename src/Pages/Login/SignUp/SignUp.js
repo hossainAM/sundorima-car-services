@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
-import Loading from '../../../Shared/Spinner/Spinner';
+import Loading from '../../../Shared/Loading/Loading'
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
 
 const SignUp = () => {

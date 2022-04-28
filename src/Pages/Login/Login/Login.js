@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import Loading from '../../../Shared/Spinner/Spinner';
+import Loading from '../../../Shared/Loading/Loading';
 import SocialLogIn from '../SocialLogIn/SocialLogIn';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -26,26 +27,34 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-
-        signInWithEmailAndPassword(email, password)
-    }
-
     let errorElement;
 
     if (error) {
       errorElement = <p>Error: {error?.message}</p>
     }
 
+    if(loading || sending) {
+        return <Loading></Loading>
+    }
+
     //use useEffect as user is loading in async way
-    useEffect(() => {
-        if(user) {
+    // useEffect(() => {
+    //     if(user) {
+    //     navigate(from, { replace: true });//navigate after getting access token
+    // }
+    // }, [from, navigate, user])
+
+      const handleSubmit = async e => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        await signInWithEmailAndPassword(email, password);
+        //jwt token
+        const {data} = await axios.post('http://localhost:5000/login', {email})
+        localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
     }
-    }, [from, navigate, user])
 
     const handleSignUp = e => {
         navigate('/signUp')
